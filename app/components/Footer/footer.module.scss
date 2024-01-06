@@ -10,9 +10,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 0 45px;
+     
       .footerLeft {
         h2 {
+          margin: 0;
+          margin-bottom: 20px;
+          margin-top: 10px;
           color: #fff;
           font-family: Carter One;
           font-size: 24px;
@@ -20,6 +23,7 @@
           line-height: 36px;
         }
         p {
+          margin: 0;
           width: 530px;
           font-family: Roboto;
           font-size: 14px;
@@ -28,9 +32,13 @@
         }
       }
       .footerRight {
+        padding-top: 40px;
         display: flex;
         flex-direction: column;
         gap: 10px;
+        p {
+          margin:0;
+        }
         .SocialLink {
           display: flex;
           gap: 15px;

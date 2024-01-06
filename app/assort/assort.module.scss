@@ -1,0 +1,29 @@
+@function toRem($value) {
+    $remValue: ($value / 16) + rem;
+    @return $remValue;
+  }
+  
+
+.container {
+    max-width: 1240px;
+    margin:0 auto;
+}
+
+.productsCard {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: toRem(40);
+  }
+
+.assort {
+    &_title {
+        margin: 0;
+        font-size: 32px;
+        line-height: 24px;
+        font-weight: 500;
+        color:#002266;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}

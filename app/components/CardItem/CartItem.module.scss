@@ -14,10 +14,6 @@
     box-shadow: 2px -1px 14px 0px rgba(0, 0, 0, 0.25);
     transform: translateY(-5px);
   }
-  img {
-    width: 398px;
-    height: 424px;
-  }
   .cartName {
     margin-bottom: 16px;
     color: #525252;
@@ -43,9 +39,22 @@
     color: #026;
     transition: all 0.2s ease-in-out;
     margin-bottom: 17px;
-    &:hover {
+    
+    &:hover{
       color: #fff;
       background-color: #026;
     }
+
+    a {
+      text-decoration: none;
+      font-weight: 400;
+      color: #002266;
+  
+    }
+
+    &:hover a{
+      color:#fff;
+     }
+
   }
 }

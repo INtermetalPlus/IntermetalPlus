@@ -14,6 +14,12 @@
       justify-content: space-between;
       align-items: center;
       color: #fff;
+      ul {
+        padding:0;
+        li {
+          list-style: none;
+        }
+      }
       .logo {
         color: #fff;
         font-family: Carter One;
@@ -29,7 +35,13 @@
       .navItem {
         display: flex;
         list-style-type: none;
+        margin: 0;
         gap: toRem(60);
+        li a {
+          color:white;
+          text-decoration: none;
+          font-size: 18px;
+        }
       }
     }
   }

@@ -18,6 +18,7 @@
 }
 
 .mainScreen {
+  padding-top: toRem(60);
   display: flex;
   gap: 3px;
 
@@ -40,6 +41,7 @@
       color: #525252;
     }
     .mainRef {
+      text-decoration: none;
       margin-top: 30px;
       display: inline-flex;
       padding: 13px 25px;

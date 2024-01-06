@@ -29,7 +29,7 @@ export default function Home() {
               надежное сервисное обслуживание. Мы делаем онлайн-покупки
               максимально удобными, быстрыми и надежными.
             </p>
-            <Link className={styles.mainRef} href="#">
+            <Link className={styles.mainRef} href="/assort">
               Перейти в ассортименты
               <img src="/img/arrow.svg" alt="arrowImg" />
             </Link>
