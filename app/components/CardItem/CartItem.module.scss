@@ -1,0 +1,51 @@
+@function toRem($value) {
+  $remValue: ($value / 16) + rem; 
+  @return $remValue;
+}
+
+.cart {
+  width: 400px;
+  text-align: center;
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 2px -1px 14px 0px rgba(0, 0, 0, 0.25);
+    transform: translateY(-5px);
+  }
+  img {
+    width: 398px;
+    height: 424px;
+  }
+  .cartName {
+    margin-bottom: 16px;
+    color: #525252;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  .price {
+    margin-bottom: 15px;
+    color: #000;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  .orderBtn {
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid #026;
+    padding: 5px 35px;
+    background-color: #fff;
+    color: #026;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 17px;
+    &:hover {
+      color: #fff;
+      background-color: #026;
+    }
+  }
+}
