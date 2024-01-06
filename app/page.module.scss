@@ -1,0 +1,87 @@
+@function toRem($value) {
+  $remValue: ($value / 16) + rem;
+  @return $remValue;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: toRem(60);
+  min-height: 100vh;
+}
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.mainScreen {
+  display: flex;
+  gap: 3px;
+
+  align-items: center;
+
+  .mainScreenLeft {
+    h1 {
+      width: 614px;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 55px;
+      font-family: Roboto;
+      color: #525252;
+    }
+    p {
+      margin-top: 25px;
+
+      width: 574px;
+      font-family: Roboto;
+      color: #525252;
+    }
+    .mainRef {
+      margin-top: 30px;
+      display: inline-flex;
+      padding: 13px 25px;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      border-radius: 9px;
+      background-color: #026;
+      color: #fff;
+      img {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      &:hover {
+        img {
+          transform: translateX(5px);
+        }
+      }
+    }
+  }
+  .mainScreenRight {
+    width: 620px;
+    height: 511px;
+  }
+}
+
+.products {
+  .popularProduct {
+    margin-top: toRem(60);
+    margin-bottom: 40px;
+
+    color: #026;
+    font-family: Roboto;
+    font-size: 32px;
+
+    font-weight: 700;
+    line-height: 24px;
+  }
+  .productsCard {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: toRem(40);
+  }
+}
