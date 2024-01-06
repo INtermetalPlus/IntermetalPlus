@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <Header />
-        <main className={styles.main}>{children}</main>
+        <main >{children}</main>
         <Footer />
       </body>
     </html>
