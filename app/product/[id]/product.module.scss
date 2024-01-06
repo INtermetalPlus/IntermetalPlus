@@ -1,0 +1,104 @@
+.main {
+    max-width: 1240px;
+    margin:0 auto;
+  }
+  
+  .container {
+    max-width: 1240px;
+    margin:0 auto;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .product {
+    width: 781px;
+    font-weight: 500;
+  
+  &_title {
+    margin:0;
+    padding-top: 66px;
+    font-size: 32px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #002266;
+    padding-bottom: 25px;
+  }
+  
+  &_model {
+    margin:0;
+    font-size: 24px;
+    line-height: 24px;
+    padding-bottom: 20px;
+  }
+  
+  &_manufacture {
+    margin: 0;
+    font-size: 21px;
+    line-height: 24px;
+    padding-bottom: 20px;
+  }
+  
+  &_serial {
+    margin: 0;
+    font-size: 20px;
+    line-height: 24px;
+    padding-bottom: 20px;
+  }
+  
+  &_material {
+    margin: 0;
+    font-size: 20px;
+    line-height: 24px;
+    padding-bottom: 25px;
+  }
+  
+  &_price {
+    margin: 0;
+    font-size: 32px;
+    color: #002266;
+    line-height: 24px;
+  }
+  
+  }
+  
+  .description {
+    margin:0;
+  
+    font-weight: 500;
+    &_title {
+      color: #002266;
+      margin: 0;
+      padding-bottom: 15px;
+      font-size: 32px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+    &_text {
+      margin:0;
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 400;
+    }
+  
+    &_list {
+      margin: 0;
+      padding: 0 0 0 30px;
+    }
+  
+      &_item {
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 400;
+      }
+  
+  }
+  
+  .review {
+    &_title {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 24px;
+      color: #002266;
+    }
+  
+  }
