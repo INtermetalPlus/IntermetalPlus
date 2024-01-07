@@ -32,7 +32,7 @@ export default function Product() {
   
         <section className={styles.review}>
           <h3 className={styles.review_title}>Видео обзор</h3>
-          <iframe width="1240" height="711" src="https://www.youtube.com/embed/Ez3Nw5Tj1yU?si=44Q7FZgw6L6vXcyP" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+          <iframe width="1240" height="711" src="https://www.youtube.com/embed/1aQ5XpHGMu0?si=RMoMFp3UZSHGmy0x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </section>
   
       </main>
