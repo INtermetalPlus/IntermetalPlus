@@ -1,11 +1,12 @@
-import { ProductState } from "@/features/productSlice"
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { ProductState } from '@/features/productSlice';
 
-export const getProducts = async (products: ProductState[]): Promise<void> => {
-    // Simulating an asynchronous operation (e.g., fetching data from an API)
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        console.log('Products getting...', products);
-        resolve();
-      }, 1000); // Simulating a delay of 1 second
-    });
-  };
+// Async thunk for fetching products
+export const fetchProducts = createAsyncThunk(
+    'products/fetchProducts',
+    async () => {
+        const response = await axios.get('http://146.190.140.32/api/v1/products/');
+        return response.data as ProductState[];
+    }
+);
