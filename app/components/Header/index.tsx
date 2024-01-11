@@ -23,14 +23,13 @@ export const Header = () => {
           </ul>
           <ul className={styles.navItem}>
             <li>
-              <Link href="/assort">Ассортимент</Link>
-            </li>
-
-            <li>
-              <Link href="/about">О нас</Link>
+              <Link href="#about">О нас</Link>
             </li>
             <li>
-              <Link href="/contact">Контакты</Link>
+              <Link href="#assort">Ассортимент</Link>
+            </li>       
+            <li>
+              <Link href="#contact">Контакты</Link>
             </li>
           </ul>
         </nav>

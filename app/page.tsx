@@ -44,7 +44,7 @@ export default function Home() {
         </div>
 
         <div className={styles.about}>
-          <p className={styles.about_title}>О нас</p>
+          <p id="about" className={styles.about_title}>О нас</p>
           <p className={styles.about_text}>В наше динамичное время рынок оборудования бывшего употребления приобретает
               тенденцию роста. Особенно это касается рынка Европы, где как известно производятся самые качественные оборудования.
               Этот рынок
@@ -62,7 +62,7 @@ export default function Home() {
           </button>
         </div>
 
-        <div className={styles.products}>
+        <div id="assort" className={styles.products}>
           <h2 className={styles.popularProduct}>Ассортимент</h2>
           <div className={styles.productsCard}>
             {/* {здесь должен быть условный рендер} */}
