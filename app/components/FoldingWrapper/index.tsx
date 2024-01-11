@@ -26,5 +26,3 @@ export default function Wrapper({title, text}: {title: string; text: string}) {
     );
   }
 
-}
-
