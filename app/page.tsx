@@ -24,14 +24,13 @@ export default function Home() {
         <div className={styles.mainScreen}>
           <div className={styles.mainScreenLeft}>
             <h1>Найдите лучшее качество оборудования из Европы</h1>
-            <p>
-              Покупая у нас, вы получаете высокое качество продукции, гарантию и
-              надежное сервисное обслуживание. Мы делаем онлайн-покупки
-              максимально удобными, быстрыми и надежными.
-            </p>
             <Link className={styles.mainRef} href="/assort">
               Перейти в ассортименты
-              <img src="/img/arrow.svg" alt="arrowImg" />
+              <Image
+                src="/img/arrow.svg"
+                alt="arrowImg"
+                width={22}
+                height={14} />
             </Link>
           </div>
           <div className={styles.mainScreenRight}>
@@ -44,8 +43,27 @@ export default function Home() {
           </div>
         </div>
 
+        <div className={styles.about}>
+          <p className={styles.about_title}>О нас</p>
+          <p className={styles.about_text}>В наше динамичное время рынок оборудования бывшего употребления приобретает
+              тенденцию роста. Особенно это касается рынка Европы, где как известно производятся самые качественные оборудования.
+              Этот рынок
+              характеризуется не только предложением, но и растущим спросом.
+              Наша компания была создана специально для максимального приближения к потребителю
+              Центральной Азии для оптимального
+              решения следующих задач:
+              - подбор оптимального сочетания цены, качества и параметров оборудования при выборе.
+              Обеспечения кратчайшего времени для
+              проведения демонтажа и транспортировки оборудования в</p>
+          <button className={styles.about_details}>
+            <Link href='#'>
+              Подробнее...
+            </Link>
+          </button>
+        </div>
+
         <div className={styles.products}>
-          <h2 className={styles.popularProduct}>Популярные Товары</h2>
+          <h2 className={styles.popularProduct}>Ассортимент</h2>
           <div className={styles.productsCard}>
             {/* {здесь должен быть условный рендер} */}
             <CartItem />
