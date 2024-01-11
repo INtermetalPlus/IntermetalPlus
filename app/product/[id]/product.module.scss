@@ -1,26 +1,29 @@
 .main {
-    max-width: 1240px;
+    max-width: 1040px;
     margin:0 auto;
   }
   
   .container {
-    max-width: 1240px;
+    max-width: 1040px;
     margin:0 auto;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
   }
   
   .product {
+    align-self: flex-start;
+    padding-top: 156px;
     width: 781px;
     font-weight: 500;
   
   &_title {
     margin:0;
-    padding-top: 66px;
+    padding-top: 30px;
     font-size: 32px;
     line-height: 30px;
     font-weight: 700;
-    color: #002266;
+    color: #000;
     padding-bottom: 25px;
   }
   

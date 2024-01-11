@@ -8,7 +8,7 @@ export default function Product() {
         <div className={styles.container}>
           <ProductSlider />
           <div className={styles.product}>
-            <h2 className={styles.product_title}>Скутер Мотоцикл SYM Motors Car Четырехтактный двигатель</h2>
+            <h2 className={styles.product_title}>SACHMAN milling machine  data sheet</h2>
             <p className={styles.product_model}>Модель: SYM CROX 125 RED</p>
             <p className={styles.product_manufacture}>Производитель: Европа</p>
             <p className={styles.product_serial}>Серийный номер: 09078568483</p>
@@ -32,7 +32,7 @@ export default function Product() {
   
         <section className={styles.review}>
           <h3 className={styles.review_title}>Видео обзор</h3>
-          <iframe width="1240" height="711" src="https://www.youtube.com/embed/1aQ5XpHGMu0?si=RMoMFp3UZSHGmy0x" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+          <iframe width="1040" height="711" src="https://www.youtube.com/embed/1aQ5XpHGMu0?si=RMoMFp3UZSHGmy0x" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
         </section>
   
       </main>
