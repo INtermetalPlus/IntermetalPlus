@@ -9,7 +9,7 @@ export const CartItem = () => {
 
     <div className={styles.cart}>
       <Image 
-          src='/cart1.png' 
+          src='/img1.png' 
           alt="cart"
           width={398}
           height={424} />
