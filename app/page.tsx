@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ProductSkeletonCard from "./ui/skeleton/productSkeletonCard";
 import WrapperSkeleton from "./ui/skeleton/wrapperSkeleton";
+import Wrapper from "./components/FoldingWrapper/index";
 
 export default function Home() {
   //Заготовки для стейта товаров
@@ -44,7 +45,7 @@ export default function Home() {
             />
           </div>
         </div>
-
+<Wrapper maxLength={500} title={"О нас"} text={"Lorem ipsum dolor sit amet consectetur. A arcu eget fringilla viverra enim tempor sed commodo. Interdum maecenas feugiat purus turpis gravida viverra amet amet scelerisque. Quis pharetra mi elit ligula netus mattis viverra pharetra. Blandit eu pellentesque et ultricies aenean maecenas egestas eget. Blandit nibh commodo nec sit nibh. Lectus blandit non sed imperdiet augue aliquet.A arcu eget fringilla viverra enim tempor sed commodo. Interdum maecenas feugiat purus turpis gravida viverra amet amet scelerisque. Quis pharetra mi elit ligula netus mattis viverra pharetra. Blandit eu pellentesque et ultricies aenean maecenas egestas eget. Blandit nibh commodo nec sit nibh. Lectus blandit non sed imperdiet augue aliquet."}/>
 
         <div id="assort" className={styles.products}>
           <h2 className={styles.popularProduct}>Ассортимент</h2>
