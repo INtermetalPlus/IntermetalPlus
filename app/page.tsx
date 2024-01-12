@@ -4,6 +4,9 @@ import Image from "next/image";
 import { CartItem } from "./components/CardItem";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ProductSkeletonCard from "./ui/skeleton/productSkeletonCard";
+import WrapperSkeleton from "./ui/skeleton/wrapperSkeleton";
+import Wrapper from "./components/FoldingWrapper/index";
 
 export default function Home() {
   //Заготовки для стейта товаров
@@ -24,7 +27,7 @@ export default function Home() {
         <div className={styles.mainScreen}>
           <div className={styles.mainScreenLeft}>
             <h1>Найдите лучшее качество оборудования из Европы</h1>
-            <Link className={styles.mainRef} href="/assort">
+            <Link className={styles.mainRef} href="#assort">
               Перейти в ассортименты
               <Image
                 src="/img/arrow.svg"
@@ -42,36 +45,22 @@ export default function Home() {
             />
           </div>
         </div>
+<Wrapper maxLength={500} title={"О нас"} text={"Lorem ipsum dolor sit amet consectetur. A arcu eget fringilla viverra enim tempor sed commodo. Interdum maecenas feugiat purus turpis gravida viverra amet amet scelerisque. Quis pharetra mi elit ligula netus mattis viverra pharetra. Blandit eu pellentesque et ultricies aenean maecenas egestas eget. Blandit nibh commodo nec sit nibh. Lectus blandit non sed imperdiet augue aliquet.A arcu eget fringilla viverra enim tempor sed commodo. Interdum maecenas feugiat purus turpis gravida viverra amet amet scelerisque. Quis pharetra mi elit ligula netus mattis viverra pharetra. Blandit eu pellentesque et ultricies aenean maecenas egestas eget. Blandit nibh commodo nec sit nibh. Lectus blandit non sed imperdiet augue aliquet."}/>
 
-        <div className={styles.about}>
-          <p className={styles.about_title}>О нас</p>
-          <p className={styles.about_text}>В наше динамичное время рынок оборудования бывшего употребления приобретает
-              тенденцию роста. Особенно это касается рынка Европы, где как известно производятся самые качественные оборудования.
-              Этот рынок
-              характеризуется не только предложением, но и растущим спросом.
-              Наша компания была создана специально для максимального приближения к потребителю
-              Центральной Азии для оптимального
-              решения следующих задач:
-              - подбор оптимального сочетания цены, качества и параметров оборудования при выборе.
-              Обеспечения кратчайшего времени для
-              проведения демонтажа и транспортировки оборудования в</p>
-          <button className={styles.about_details}>
-            <Link href='#'>
-              Подробнее...
-            </Link>
-          </button>
-        </div>
-
-        <div className={styles.products}>
+        <div id="assort" className={styles.products}>
           <h2 className={styles.popularProduct}>Ассортимент</h2>
           <div className={styles.productsCard}>
             {/* {здесь должен быть условный рендер} */}
+            {/* Тут будет скелетон и пропс который будет на основе количества выводить сколько элементов будет */}
+         {/* <WrapperSkeleton count={6}/> */}
+
             <CartItem />
             <CartItem />
             <CartItem />
             <CartItem />
             <CartItem />
             <CartItem />
+
           </div>
         </div>
       </div>

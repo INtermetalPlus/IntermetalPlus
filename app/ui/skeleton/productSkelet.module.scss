@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;   
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+
+    &_imgPlaceholder {
+        background-color: #C4C4C4;
+        width: 400px;
+        height: 360px;
+        margin-bottom: 10px;
+        animation: loadingAnimation 1.5s infinite ease-in-out;
+    }
+    &_titlePlaceholder {
+        background-color: #C4C4C4;
+        width: 326px;
+        height: 26px;
+        margin-bottom: 16px;
+        animation: loadingAnimation 1.5s infinite ease-in-out;
+    }
+
+    &_pricePlaceholder {
+        background-color: #C4C4C4;
+        width: 150px;
+        height: 30px;
+        margin-bottom: 15px;
+        animation: loadingAnimation 1.5s infinite ease-in-out;
+    }
+
+    &_buttonPlaceholder {
+        all:unset;
+        background-color: #C4C4C4;
+        width: 150px;
+        height: 30px;
+        margin-bottom: 17px;
+        animation: loadingAnimation 1.5s infinite ease-in-out;
+    }
+
+    @keyframes loadingAnimation {
+        0% { opacity: 0.7; }
+        50% { opacity: 1; }
+        100% { opacity: 0.8; }
+    }
+}
