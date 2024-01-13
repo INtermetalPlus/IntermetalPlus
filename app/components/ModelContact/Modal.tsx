@@ -13,7 +13,7 @@ const Modal = ({ isOpen, onClose }:{isOpen: boolean,onClose: ()=> void}) => {
             
             <div className={styles.blog}>
               <div className={styles.contact_info}>
-              <p className="closeButton" onClick={onClose}>
+              <p className={styles.closeButton} onClick={onClose}>
               X
             </p>
                 <p className={styles.phone}>+996 773 505 000</p>
