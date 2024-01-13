@@ -1,6 +1,29 @@
 .main {
     max-width: 1040px;
     margin:0 auto;
+    .background {
+      cursor: pointer;
+      padding-top: 40px;
+      font-size: 24px;
+      line-height: 24px;
+      color:#525252;
+    
+      p {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        .arrowRight {
+          position: relative;
+          top:2px;
+          }
+        .cartMenu {
+          color:#002266;
+          font-size: 24px;
+          line-height: 24px;
+          font-weight: 700;
+        }
+      }
+    }
   }
   
   .container {
@@ -9,12 +32,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    margin-bottom: 10px;
   }
   
   .product {
     align-self: flex-start;
-    padding-top: 156px;
-    width: 781px;
     font-weight: 500;
   
   &_title {
@@ -27,81 +49,49 @@
     padding-bottom: 25px;
   }
   
-  &_model {
-    margin:0;
-    font-size: 24px;
-    line-height: 24px;
-    padding-bottom: 20px;
-  }
-  
-  &_manufacture {
-    margin: 0;
-    font-size: 21px;
-    line-height: 24px;
-    padding-bottom: 20px;
-  }
-  
-  &_serial {
-    margin: 0;
-    font-size: 20px;
-    line-height: 24px;
-    padding-bottom: 20px;
-  }
-  
-  &_material {
-    margin: 0;
-    font-size: 20px;
-    line-height: 24px;
-    padding-bottom: 25px;
-  }
-  
-  &_price {
-    margin: 0;
-    font-size: 32px;
-    color: #002266;
-    line-height: 24px;
-  }
-  
+
   }
   
   .description {
-    margin:0;
-  
-    font-weight: 500;
-    &_title {
-      color: #002266;
-      margin: 0;
-      padding-bottom: 15px;
+    
+  .price {
+    text-align: center;
+    color: #525252;
+    padding-top: 30px;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 24px;
+    &_value{
+      color:#002266;
+      font-weight: 700;
       font-size: 32px;
       line-height: 24px;
-      font-weight: 400;
     }
-    &_text {
-      margin:0;
-      font-size: 20px;
-      line-height: 30px;
-      font-weight: 400;
-    }
-  
-    &_list {
-      margin: 0;
-      padding: 0 0 0 30px;
-    }
-  
-      &_item {
-        font-size: 20px;
-        line-height: 30px;
-        font-weight: 400;
-      }
-  
+   }
+   .button {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    outline: none;
+    background-color:#002266;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color:#fff;
+    padding: 10px 50px;
+   }
   }
   
   .review {
+    margin-bottom: 50px;
     &_title {
-      font-weight: 500;
-      font-size: 32px;
+      color: #525252;
+      font-weight: 400;
+      font-size: 20px;
       line-height: 24px;
-      color: #002266;
+      padding-bottom: 12px;
     }
   
   }

@@ -6,14 +6,15 @@ import Image from "next/image";
 import React from "react";
 import Slider from "react-slick";
 
-export default function ProductSlider() {
+export default function ProductSlider({img1, img2, img3,img4}:{img1:string, img2:string, img3:string, img4:string}) {
+  const imageNames = [img1, img2, img3, img4];
   const settings = {
     customPaging: function (i: number) {
       return (
         <a key={i}>
           <Image
-            src={`/product${i + 1}.png`}
-            alt={"Image of product"}
+            src={`${imageNames[i]}`}
+            alt={`Image of product ${i + 1}`}
             width={245.01}
             height={152.88}
           />
@@ -35,33 +36,16 @@ export default function ProductSlider() {
   return (
     <div className="container">
       <Slider {...settings}>
-        <Image
-          src={"/product1.png"}
-          alt="Image of product"
-          width={1040}
-          height={600}
-        />
-
-        <Image
-          src={"/product2.png"}
-          alt="Image of product"
-          width={1040}
-          height={600}
-        />
-
-        <Image
-          src={"/product3.png"}
-          alt="Image of product"
-          width={1040}
-          height={600}
-        />
-
-        <Image
-          src={"/product4.png"}
-          alt="Image of product"
-          width={1040}
-          height={600}
-        />
+      {imageNames.map((imageName, i) => (
+        <div key={i}>
+          <Image
+            src={`${imageName}`}
+            alt={`Image of product ${i + 1}`}
+            width={1040}
+            height={600}
+          />
+        </div>
+      ))}
       </Slider>
     </div>
   );

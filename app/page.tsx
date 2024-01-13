@@ -1,25 +1,21 @@
 import Link from "next/link";
 import styles from "./page.module.scss";
 import Image from "next/image";
-import { CartItem } from "./components/CardItem";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import ProductSkeletonCard from "./ui/skeleton/productSkeletonCard";
-import WrapperSkeleton from "./ui/skeleton/wrapperSkeleton";
 import Wrapper from "./components/FoldingWrapper/index";
+import { CartList } from "./components/CartList";
+import { Suspense } from "react";
+import WrapperSkeleton from "./ui/skeleton/wrapperSkeleton";
 
 export default function Home() {
-  //Заготовки для стейта товаров
-  // const [items, setItems] = useState([])
-
-  //Заготовки для Api
-  // useEffect(() => {
-  //   try {
-  //     axios.get("").then(res => setItems(res.data));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, []);
+  const styleObject = {
+    background:
+      "linear-gradient(to top, rgba(255, 255, 255, .9), rgba(255, 255, 255, .3))",
+    width: "100%",
+    height: "-1px",
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+  };
 
   return (
     <section>
@@ -33,7 +29,8 @@ export default function Home() {
                 src="/img/arrow.svg"
                 alt="arrowImg"
                 width={22}
-                height={14} />
+                height={14}
+              />
             </Link>
           </div>
           <div className={styles.mainScreenRight}>
@@ -45,22 +42,22 @@ export default function Home() {
             />
           </div>
         </div>
-<Wrapper maxLength={500} title={"О нас"} text={"Lorem ipsum dolor sit amet consectetur. A arcu eget fringilla viverra enim tempor sed commodo. Interdum maecenas feugiat purus turpis gravida viverra amet amet scelerisque. Quis pharetra mi elit ligula netus mattis viverra pharetra. Blandit eu pellentesque et ultricies aenean maecenas egestas eget. Blandit nibh commodo nec sit nibh. Lectus blandit non sed imperdiet augue aliquet.A arcu eget fringilla viverra enim tempor sed commodo. Interdum maecenas feugiat purus turpis gravida viverra amet amet scelerisque. Quis pharetra mi elit ligula netus mattis viverra pharetra. Blandit eu pellentesque et ultricies aenean maecenas egestas eget. Blandit nibh commodo nec sit nibh. Lectus blandit non sed imperdiet augue aliquet."}/>
+
+        <Wrapper
+          styleText={styleObject}
+          maxLength={500}
+          title={"О нас"}
+          text={
+            "Lorem ipsum dolor sit amet consectetur. A arcu eget fringilla viverra enim tempor sed commodo. Interdum maecenas feugiat purus turpis gravida viverra amet amet scelerisque. Quis pharetra mi elit ligula netus mattis viverra pharetra. Blandit eu pellentesque et ultricies aenean maecenas egestas eget. Blandit nibh commodo nec sit nibh. Lectus blandit non sed imperdiet augue aliquet.A arcu eget fringilla viverra enim tempor sed commodo. Interdum maecenas feugiat purus turpis gravida viverra amet amet scelerisque. Quis pharetra mi elit ligula netus mattis viverra pharetra. Blandit eu pellentesque et ultricies aenean maecenas egestas eget. Blandit nibh commodo nec sit nibh. Lectus blandit non sed imperdiet augue aliquet."
+          }
+        />
 
         <div id="assort" className={styles.products}>
           <h2 className={styles.popularProduct}>Ассортимент</h2>
-          <div className={styles.productsCard}>
-            {/* {здесь должен быть условный рендер} */}
-            {/* Тут будет скелетон и пропс который будет на основе количества выводить сколько элементов будет */}
-         {/* <WrapperSkeleton count={6}/> */}
-
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-
+          <div className={styles.productsCard}> 
+            <Suspense fallback={<WrapperSkeleton />}>
+              <CartList /> 
+            </Suspense>   
           </div>
         </div>
       </div>

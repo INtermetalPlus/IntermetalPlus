@@ -17,7 +17,7 @@ export const Header = () => {
                   width={40}
                   height={40}
                 />
-                Equipment from Europe
+                IntermetalPlus
               </Link>
             </li>
           </ul>
