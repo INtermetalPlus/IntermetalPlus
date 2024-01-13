@@ -10,13 +10,14 @@ const Modal = ({ isOpen, onClose }:{isOpen: boolean,onClose: ()=> void}) => {
       {isOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <span className="close" onClick={onClose}>
-              &times;
-            </span>
+            
             <div className={styles.blog}>
-              <div className={styles.model_contact}>
-                <p className={styles.number}>+996 773 505 000</p>
-                <p className={styles.number}>+996 773 505 000</p>
+              <div className={styles.contact_info}>
+              <p className="closeButton" onClick={onClose}>
+              X
+            </p>
+                <p className={styles.phone}>+996 773 505 000</p>
+                <p className={styles.phone}>+996 773 505 000</p>
                 <p className={styles.email}>rustamSOSKA</p>
               </div>
             </div>
