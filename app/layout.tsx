@@ -12,7 +12,7 @@ const roboto = Roboto({
 })
 
 import styles from "./page.module.scss";
-import { Header } from "./components/Header";
+import { Header } from "./components/Header/index";
 import { Footer } from "./components/Footer";
 
 
