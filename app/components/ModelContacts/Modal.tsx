@@ -1,4 +1,4 @@
-// Import necessary modules and types
+'use client';
 import React, { useState, useEffect } from 'react';
 import styles from './contacts.module.scss';
 import Image from 'next/image';
@@ -16,13 +16,15 @@ interface Contact {
   Email: string;
 }
 
+type Contacts = Contact[]
+
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
-  const [contacts, setContacts] = useState<Contact | null>(null);
+  const [contacts, setContacts] = useState<Contacts | null>(null);
 
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const data: Contact = await getContacts();
+        const data: Contacts = await getContacts();
         setContacts(data);
       } catch (error) {
         console.error('Error fetching contacts:', error);
@@ -47,15 +49,15 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         <div className={styles.modalContent}>
           <div className={styles.contactItem}>
             <Image width={25} height={25} src="/bphone.png" alt="Phone" />
-            <span>{contacts?.Phone_number}</span>
+            <span>{contacts?.[0]?.Phone_number}</span>
           </div>
           <div className={styles.contactItem}>
             <Image width={25} height={25} src="/whatsapp.png" alt="WhatsApp" />
-            <span>{contacts?.number_WhatsApp}</span>
+            <span>{contacts?.[0]?.number_WhatsApp}</span>
           </div>
           <div className={styles.contactItem}>
             <Image width={25} height={25} src="/mail.png" alt="Email" />
-            <span>{contacts?.Email}</span>
+            <span>{contacts?.[0]?.Email}</span>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
-"use client"
-import { useState } from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 import { Modal } from '@/app/components/Modal';
 import styles from "./product.module.scss";
 import ProductSlider from "../../ui/slider/Slider";
@@ -8,6 +8,20 @@ import { getProductById } from "@/app/lib/data";
 import Link from "next/link";
 import SliderSkeleton from "@/app/ui/skeleton/sliderSkeleton";
 import { Suspense } from "react";
+
+interface Product {
+  id?: number;
+  product_name?: string;
+  images1?: string;
+  images2?: string;
+  images3?: string;
+  images4?: string;
+  url_video?: string;
+  price?: string;
+  description?: string;
+  characteristic?: string;
+}
+
 
 interface IframeProps {
   videoLink: string;
@@ -30,34 +44,42 @@ const Iframe: React.FC<IframeProps> = ({ videoLink, width = "1040", height = "71
 };
 
 function getYouTubeVideoID(url: string): string | null {
-  // This pattern is for standard YouTube links.
   const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
   const match = url?.match(regExp);
 
   if (match && match[2].length === 11) {
-    // The video ID is usually 11 characters long
     return match[2];
   }
 
-  // Return null if no video ID is found
   return null;
 }
 
-export default async function Product({ params }: { params: { id: string } }) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+export default function Product({ params }: { params: { id: string } }) {
+  const [product, setProduct] = useState<Product>({} as Product);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleOpenModal = () => {
-        setIsModalOpen(true);
-    }
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  }
 
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-    }
- 
-  const { id } = params;
-  const product = await getProductById(id);
-  console.log(product.url_video)
-  const videoID = getYouTubeVideoID(product.url_video)
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data:Product = await getProductById(params.id);
+      setProduct(data);
+    };
+
+    fetchData();
+  }, [params.id]);
+
+  if (!product) {
+    return <div>Loading...</div>; // Or any other loading state representation
+  }
+
+  const videoID = getYouTubeVideoID(product.url_video || '');
   const productVideoLink = `https://www.youtube.com/embed/${videoID}`;
 
   const styleObject = {
@@ -79,10 +101,10 @@ export default async function Product({ params }: { params: { id: string } }) {
         
         <Suspense fallback={<SliderSkeleton />}>
           <ProductSlider
-            img1={product.images1}
-            img2={product.images2}
-            img3={product.images3}
-            img4={product.images4}
+            img1={product.images1 || ''}
+            img2={product.images2 || ''}
+            img3={product.images3 || ''}
+            img4={product.images4 || ''}
           />
         </Suspense>
     
@@ -93,9 +115,9 @@ export default async function Product({ params }: { params: { id: string } }) {
           <Wrapper
             styleTitle={{ fontSize: "20px", lineHeight:"30px", color:'#525252',fontWeight:'400' }}
             styleText={styleObject}
-            maxLength={product.description.length / 2}
+            maxLength={product.description ? product.description.length / 2 : 0}            
             title="Описание:"
-            text={product.description}
+            text={product.description || ''}
           />
         </div>
       </div>
@@ -111,10 +133,10 @@ export default async function Product({ params }: { params: { id: string } }) {
             top: "10px",
             bottom: "0"
           }}
-          maxLength={product.characteristic.length / 2}
+          maxLength={product.characteristic ? product.characteristic.length / 2:0}
           styleTitle={{ fontSize: "20px", lineHeight:"30px", color:'#525252',fontWeight:'400' }}
           title="Характеристика:"
-          text={product.characteristic}
+          text={product.characteristic || ''}
           isProduct={true}
           styledText={{color:'black',fontWeight:'400',fontSize:'24px',lineHeight:'30px'}}
         />
@@ -122,7 +144,8 @@ export default async function Product({ params }: { params: { id: string } }) {
           Цена:<span className={styles.price_value}>190 000 сом</span>
         </div>
         <div style={{textAlign:'center'}}>
-          <button className={styles.button}>Связаться с нами</button>
+          <button onClick={handleOpenModal} className={styles.button}>Связаться с нами</button>
+          <Modal isOpen={isModalOpen} onClose={handleCloseModal}/>
         </div>
       </section>
 

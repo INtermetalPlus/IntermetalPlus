@@ -1,9 +1,18 @@
-import React from "react";
 import styles from "./footer.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import { getContacts } from "@/app/lib/data";
 
-export const Footer = () => {
+interface Contact {
+  Phone_number: string;
+  number_WhatsApp: string;
+  Email: string;
+}
+
+type Contacts = Contact[]
+
+export async function Footer() {
+  const contacts : Contacts = await getContacts()
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -22,15 +31,14 @@ export const Footer = () => {
           <div className={styles.footerRight}>
               <div className={styles.contacts}>
                 <p style={{margin:0}}>
-                <Image src={"/phone.png"} alt="phone" width={25} height={25}/><span>+996 773 505 000</span>
+                <Image src={"/phone.png"} alt="phone" width={25} height={25}/><span>{contacts[0].Phone_number}</span>
                 </p>
               <p style={{margin:0}}>
-                <Image src={"/whats.png"} alt="whatsapp" width={25} height={25}/><span>+996 773 505 000</span>
+                <Image src={"/whats.png"} alt="whatsapp" width={25} height={25}/><span>{contacts[0].number_WhatsApp}</span>
               </p>
-               
               </div>
               <div className={styles.email}>
-                <Image src={"/email.png"} alt="email" width={25} height={25}/><span>intermetalplus33@gmail.com</span>
+                <Image src={"/email.png"} alt="email" width={25} height={25}/><span>{contacts[0].Email}</span>
               </div>
             </div>
           </div>
