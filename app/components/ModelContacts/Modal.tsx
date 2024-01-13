@@ -34,7 +34,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       </div>
       <div className={styles.modalContent}>
         <div className={styles.contactItem}>
-          <img src="/phone.png" alt="Phone" />
+          <img src="/bphone.png" alt="Phone" />
           <span>+996 773 505 000</span>
         </div>
         <div className={styles.contactItem}>
