@@ -1,40 +1,117 @@
-import styles from './product.module.scss'
-import ProductSlider from '../../ui/slider/Slider'
+import styles from "./product.module.scss";
+import ProductSlider from "../../ui/slider/Slider";
+import Wrapper from "@/app/components/FoldingWrapper";
+import { getProductById } from "@/app/lib/data";
+import Link from "next/link";
 
+interface IframeProps {
+  videoLink: string;
+  width?: string;
+  height?: string;
+}
 
-export default function Product() {
-    return (
-        <main className={styles.main} >
-        <div className={styles.container}>
-          <ProductSlider />
-          <div className={styles.product}>
-            <h2 className={styles.product_title}>SACHMAN milling machine  data sheet</h2>
-            <p className={styles.product_model}>Модель: SYM CROX 125 RED</p>
-            <p className={styles.product_manufacture}>Производитель: Европа</p>
-            <p className={styles.product_serial}>Серийный номер: 09078568483</p>
-            <p className={styles.product_material}>Материал изделия: металл, железо, аллюминий</p>
-            <div className={styles.product_price}>Цена: 69 000 сом</div>
-          </div>
+const Iframe: React.FC<IframeProps> = ({ videoLink, width = "1040", height = "711" }) => {
+  return (
+    <iframe
+      width={width}
+      height={height}
+      src={videoLink}
+      title="YouTube video player"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowFullScreen
+    ></iframe>
+  );
+};
+
+function getYouTubeVideoID(url: string): string | null {
+  // This pattern is for standard YouTube links.
+  const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+  const match = url?.match(regExp);
+
+  if (match && match[2].length === 11) {
+    // The video ID is usually 11 characters long
+    return match[2];
+  }
+
+  // Return null if no video ID is found
+  return null;
+}
+
+export default async function Product({ params }: { params: { id: string } }) {
+ 
+  const { id } = params;
+  const product = await getProductById(id);
+  console.log(product.url_video)
+  const videoID = getYouTubeVideoID(product.url_video)
+  const productVideoLink = `https://www.youtube.com/embed/${videoID}`;
+
+  const styleObject = {
+    background:
+      "linear-gradient(to top, rgba(255, 255, 255, .9), rgba(255, 255, 255, .3))",
+    width: "100%",
+    height: "-1px",
+    position: "absolute",
+    top: "40px",
+    bottom: "0",
+  };
+
+  return (
+    <main className={styles.main}>
+      <div className={styles.background}>
+        <p><Link href='/'>Ассортимент</Link> <span className={styles.arrowRight}>&gt;</span> <span className={styles.cartMenu}>Карточка товара</span></p>
+      </div>
+      <div className={styles.container}>
+        <ProductSlider
+          img1={product.images1}
+          img2={product.images2}
+          img3={product.images3}
+          img4={product.images4}
+        />
+        <div className={styles.product}>
+          <h2 className={styles.product_title}>
+            {product.product_name}
+          </h2>
+          <Wrapper
+            styleTitle={{ fontSize: "20px", lineHeight:"30px", color:'#525252',fontWeight:'400' }}
+            styleText={styleObject}
+            maxLength={product.description.length / 2}
+            title="Описание:"
+            text={product.description}
+          />
         </div>
-  
-        <section className={styles.description}>
-          <h2 className={styles.description_title}>Описание</h2>
-          <p className={styles.description_text}>SYM Motors из Тайваня действительно известна своими надежными и экономичными транспортными средствами. Возможно, вы имеете в виду модель &quot;Sym Symphony&quot; или другие скутеры от этого производителя. Вот несколько характеристик и особенностей, которые часто ассоциируются с скутерами SYM Motors:</p>
-          <ol className={styles.description_list}>
-            <li className={styles.description_item}>
-              Надежность: SYM Motors славится своими транспортными средствами, которые обычно отличаются высоким уровнем надежности и долговечности. Четырехтактные двигатели обеспечивают более стабильную и эффективную работу в сравнении с двухтактными.
-            </li>
-            <li className={styles.description_item}>
-              Экономичность: Четырехтактные двигатели обычно более топлиноэффективны, что приводит к экономии топлива и снижению расходов на его заправку. Это важно для владельцев скутеров, уделяющих внимание экологическим и экономическим аспектам.
-            </li>
-          </ol>
-        </section>
-  
-        <section className={styles.review}>
-          <h3 className={styles.review_title}>Видео обзор</h3>
-          <iframe width="1040" height="711" src="https://www.youtube.com/embed/1aQ5XpHGMu0?si=RMoMFp3UZSHGmy0x" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-        </section>
-  
-      </main>
-    )
+      </div>
+
+      <section className={styles.description}>
+        <Wrapper
+          styleText={{
+            background:
+              "linear-gradient(to top, rgba(255, 255, 255, .9), rgba(255, 255, 255, .3))",
+            width: "100%",
+            height: "-1px",
+            position: "absolute",
+            top: "10px",
+            bottom: "0"
+          }}
+          maxLength={product.characteristic.length / 2}
+          styleTitle={{ fontSize: "20px", lineHeight:"30px", color:'#525252',fontWeight:'400' }}
+          title="Характеристика:"
+          text={product.characteristic}
+          isProduct={true}
+          styledText={{color:'black',fontWeight:'400',fontSize:'24px',lineHeight:'30px'}}
+        />
+        <div className={styles.price}>
+          Цена:<span className={styles.price_value}>190 000 сом</span>
+        </div>
+        <div style={{textAlign:'center'}}>
+          <button className={styles.button}>Связаться с нами</button>
+        </div>
+      </section>
+
+      <section className={styles.review}>
+        <h3 className={styles.review_title}>Видео обзор</h3>
+      <Iframe videoLink={productVideoLink} />
+      </section>
+    </main>
+  );
 }

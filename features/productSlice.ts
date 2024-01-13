@@ -1,33 +1,53 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../store/store'
+import { getProducts } from '@/thunks/thunks';
 
-// Define a type for the slice state
-export interface ProductState {
-    id: number;
-    name: string;
-    img1: string;
-    img2: string;
-    img3: string;
-    img4: string;
-    video: string;
-    price: string;
-    description: string;
-    detail_description: string;
+export interface Product {
+    id?: number;
+    name?: string;
+    images1?: string;
+    images2?: string;
+    images3?: string;
+    images4?: string;
+    video?: string;
+    price?: string;
+    description?: string;
+    characteristic?: string;
 }
 
-type OptionalProdcutInfo = Partial<ProductState>
+export interface ProductState {
+    products: Product[] | null;
+    isLoading: boolean;
+    isError: boolean;
+}
+
 
 // Define the initial state using that type
-const initialState: OptionalProdcutInfo = {
-
+const initialState: ProductState = {
+    products:null,
+    isLoading:false,
+    isError:false
 }
 
 export const productSlice = createSlice({
     name: 'products',
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
-    reducers:{}
+    reducers:{},
+    extraReducers: (builder) => {
+        builder
+            .addCase(getProducts.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(getProducts.fulfilled, (state, action: PayloadAction<Product[]>) => {
+                state.isLoading = false
+                state.products = action.payload
+            })
+            .addCase(getProducts.rejected, (state) => {
+                state.isLoading = false
+                state.isError = true
+            })
+    }
 })
 
 

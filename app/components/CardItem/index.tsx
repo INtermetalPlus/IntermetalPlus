@@ -1,23 +1,25 @@
-import React from "react";
+import React, { FC } from "react";
 import styles from "./CartItem.module.scss";
 import cartImage from "../../../public/cart1.png";
 import Link from "next/link";
 import Image from "next/image";
+import { Product } from "@/features/productSlice";
 
-export const CartItem = () => {
+export const CartItem:FC<{product:Product}> = ({ product }) => {
+
   return (
 
     <div className={styles.cart}>
       <Image 
-          src='/img1.png' 
-          alt="cart"
+          src={`${product.images1}`}
+          alt="Image cart"
           width={398}
           height={424} />
-      <p className={styles.cartName}>Скутер Мотоцикл SYM Motors Car Ч...</p>
+      <p className={styles.cartName}>{product.name}</p>
       <p className={styles.price}>
-        <b>69 000 сом</b>
+        <b>{product.price}</b>
       </p>
-      <Link href='/product/34'>
+      <Link href={`product/${product.id}`}>
       <button className={styles.orderBtn}>    
           Заказать
       </button>
