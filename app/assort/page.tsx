@@ -1,5 +1,5 @@
 import { CartItem } from '../components/CardItem';
-import styles from './assort.module.scss'
+import styles from './assort.module.scss';
 
 export default function Assort() {
   return (

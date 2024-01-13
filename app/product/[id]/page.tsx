@@ -1,3 +1,6 @@
+"use client"
+import { useState } from 'react';
+import { Modal } from '@/app/components/Modal';
 import styles from "./product.module.scss";
 import ProductSlider from "../../ui/slider/Slider";
 import Wrapper from "@/app/components/FoldingWrapper";
@@ -41,6 +44,15 @@ function getYouTubeVideoID(url: string): string | null {
 }
 
 export default async function Product({ params }: { params: { id: string } }) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    }
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    }
  
   const { id } = params;
   const product = await getProductById(id);
@@ -121,3 +133,4 @@ export default async function Product({ params }: { params: { id: string } }) {
     </main>
   );
 }
+
