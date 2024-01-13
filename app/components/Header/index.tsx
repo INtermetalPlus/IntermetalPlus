@@ -1,9 +1,19 @@
-import React from "react";
+// Header.js
+'use client';
+import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./header.module.scss";
 import Image from "next/image";
+import Modal from "../ModelContact/Modal";
+// Путь к вашему компоненту Modal
 
 export const Header = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -29,11 +39,13 @@ export const Header = () => {
               <Link href="#assort">Ассортимент</Link>
             </li>       
             <li>
-              <Link href="#contact">Контакты</Link>
+              <button onClick={toggleModal}>Контакты</button>
+              <Modal isOpen={isModalOpen} onClose={toggleModal} />
             </li>
           </ul>
         </nav>
       </div>
+     
     </header>
   );
 };
