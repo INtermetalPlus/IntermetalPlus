@@ -1,21 +1,31 @@
-import React, { FC, Suspense, useEffect } from "react";
 import styles from "./cartList.module.scss";
 import { getProducts } from "@/app/lib/data";
 import { CartItem } from "../CardItem";
-import { Product } from "@/features/productSlice";
-import WrapperSkeleton from "@/app/ui/skeleton/wrapperSkeleton";
+
+interface Product {
+  id?: number;
+  name?: string;
+  images1?: string;
+  images2?: string;
+  images3?: string;
+  images4?: string;
+  video?: string;
+  price?: string;
+  description?: string;
+  characteristic?: string;
+}
 
 export async function CartList() {
   const products = await getProducts()
  
   return (
-    <Suspense fallback={<WrapperSkeleton count={products.length} />}>
-       <div className={styles.container}> 
+    
+      <div className={styles.container}> 
       {products && products.map((product: Product) => (
-        <CartItem key={product.id} product={product} />
+            <CartItem key={product.id} product={product} />
       ))}
     </div>
-    </Suspense>
+ 
    
   );
 };

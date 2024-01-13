@@ -3,6 +3,8 @@ import styles from "./page.module.scss";
 import Image from "next/image";
 import Wrapper from "./components/FoldingWrapper/index";
 import { CartList } from "./components/CartList";
+import { Suspense } from "react";
+import WrapperSkeleton from "./ui/skeleton/wrapperSkeleton";
 
 export default function Home() {
   const styleObject = {
@@ -52,8 +54,10 @@ export default function Home() {
 
         <div id="assort" className={styles.products}>
           <h2 className={styles.popularProduct}>Ассортимент</h2>
-          <div className={styles.productsCard}>
-            <CartList />
+          <div className={styles.productsCard}> 
+            <Suspense fallback={<WrapperSkeleton />}>
+              <CartList /> 
+            </Suspense>   
           </div>
         </div>
       </div>

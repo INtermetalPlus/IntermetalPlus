@@ -3,6 +3,8 @@ import ProductSlider from "../../ui/slider/Slider";
 import Wrapper from "@/app/components/FoldingWrapper";
 import { getProductById } from "@/app/lib/data";
 import Link from "next/link";
+import SliderSkeleton from "@/app/ui/skeleton/sliderSkeleton";
+import { Suspense } from "react";
 
 interface IframeProps {
   videoLink: string;
@@ -62,12 +64,16 @@ export default async function Product({ params }: { params: { id: string } }) {
         <p><Link href='/'>Ассортимент</Link> <span className={styles.arrowRight}>&gt;</span> <span className={styles.cartMenu}>Карточка товара</span></p>
       </div>
       <div className={styles.container}>
-        <ProductSlider
-          img1={product.images1}
-          img2={product.images2}
-          img3={product.images3}
-          img4={product.images4}
-        />
+        
+        <Suspense fallback={<SliderSkeleton />}>
+          <ProductSlider
+            img1={product.images1}
+            img2={product.images2}
+            img3={product.images3}
+            img4={product.images4}
+          />
+        </Suspense>
+    
         <div className={styles.product}>
           <h2 className={styles.product_title}>
             {product.product_name}

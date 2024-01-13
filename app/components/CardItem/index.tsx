@@ -3,7 +3,20 @@ import styles from "./CartItem.module.scss";
 import cartImage from "../../../public/cart1.png";
 import Link from "next/link";
 import Image from "next/image";
-import { Product } from "@/features/productSlice";
+
+interface Product {
+  id?: number;
+  name?: string;
+  images1?: string;
+  images2?: string;
+  images3?: string;
+  images4?: string;
+  video?: string;
+  price?: string;
+  description?: string;
+  characteristic?: string;
+}
+
 
 export const CartItem:FC<{product:Product}> = ({ product }) => {
 
