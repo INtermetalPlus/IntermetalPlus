@@ -1,6 +1,5 @@
 import { CartItem } from '../components/CardItem';
 import styles from './assort.module.scss';
-import { Modal2 } from '../components/Modal'
 
 export default function Assort() {
   return (
@@ -21,8 +20,6 @@ export default function Assort() {
             <CartItem />
             <CartItem />
             <CartItem />
-            <Modal2 />
-
           </div>
 
     </div>

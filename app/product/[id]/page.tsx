@@ -1,8 +1,20 @@
+"use client"
 import styles from './product.module.scss'
 import ProductSlider from '../../ui/slider/Slider'
+import { useState } from 'react';
+import { Modal } from '@/app/components/Modal';
 
 
 export default function Product() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    }
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    }
     return (
         <main className={styles.main} >
         <div className={styles.container}>
@@ -29,7 +41,8 @@ export default function Product() {
             </li>
           </ol>
         </section>
-  
+        <button className={styles.callUs} onClick={handleOpenModal}> Связаться с нами </button>
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
         <section className={styles.review}>
           <h3 className={styles.review_title}>Видео обзор</h3>
           <iframe width="1040" height="711" src="https://www.youtube.com/embed/1aQ5XpHGMu0?si=RMoMFp3UZSHGmy0x" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
