@@ -2,6 +2,7 @@
   $remValue: ($value / 16) + rem;
   @return $remValue;
 }
+
 .header {
   background: #026;
   padding: toRem(22) toRem(100);
@@ -14,35 +15,101 @@
       justify-content: space-between;
       align-items: center;
       color: #fff;
+
+      .logo {
+        color: #fff;
+        font-family: 'Carter One', sans-serif;
+        font-size: toRem(24);
+        font-style: normal;
+        font-weight: 400;
+        line-height: toRem(36);
+        display: flex;
+        align-items: center;
+        gap: toRem(10);
+      }
+
       ul {
-        padding:0;
+        padding: 0;
+        display: flex;
         li {
           list-style: none;
         }
       }
-      .logo {
-        color: #fff;
-        font-family: Carter One;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 36px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
+      
       .navItem {
-        display: flex;
         list-style-type: none;
         margin: 0;
         gap: toRem(60);
         li a {
-          color:white;
+          color: white;
           text-decoration: none;
-          font-size: 18px;
+          font-size: toRem(18);
         }
       }
-    }
-  }
+
+      // Hamburger menu icon
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        @media screen and (max-width: 780px) {
+          display: block;
+        }
+      }
+
+      // Full-screen menu
+      .fullScreenMenu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        padding-top: toRem(50);
+        text-align: center;
+        a {
+          display: block;
+          margin: toRem(20) 0;
+        }
+      }
+
+      // Media query for responsive design
+      @media screen and (max-width: 780px) {
+        .navItem {
+          display: none;
+        }
+      }
+
+      // Adjust for screens smaller than 500px
+      @media screen and (max-width: 500px) {
+        justify-content: space-between;
+
+        .logo, .hamburger {
+          flex: 1;
+        }
+
+        .logo {
+          justify-content: flex-start;
+          text-align: left;
+        }
+
+        .hamburger {
+          justify-content: flex-end;
+          padding-right: toRem(16);
+        }
+      }
+
+      // New media
+@media screen and (max-width: 400px) {
+.logo {
+font-size: toRem(20); // Adjust the logo size to be smaller
+gap: toRem(8); // Reduce the gap between logo elements
+}
+.hamburger {
+  padding-right: toRem(8); // Reduce the padding to give more space
+}
+}
+}
+}
 }
