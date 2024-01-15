@@ -22,7 +22,7 @@ export default function Home() {
       <div className={styles.container}>
         <div className={styles.mainScreen}>
           <div className={styles.mainScreenLeft}>
-            <h1>Найдите лучшее качество оборудования из Европы</h1>
+          <h1 style={{ textAlign: 'center', width: '100%' }}>Найдите лучшее качество оборудования из Европы</h1>
             <Link className={styles.mainRef} href="#assort">
               Перейти в ассортименты
               <Image
