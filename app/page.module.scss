@@ -27,7 +27,7 @@
   .mainScreenLeft {
     h1 {
       margin: 0;
-      width: 614px;
+      width: 100%; ;
       font-size: 48px;
       font-weight: 700;
       line-height: 55px;
@@ -46,6 +46,8 @@
       border-radius: 9px;
       background-color: #026;
       color: #fff;
+      width: 100%; // Занимает всю доступную ширину
+      box-sizing: border-box;
       img {
         transition: transform 0.3s ease-in-out;
       }
@@ -79,3 +81,20 @@
     margin-bottom: toRem(40);
   }
 }
+
+@media (max-width: 440px) {
+  .mainScreenLeft {
+    h1 {
+      font-size: 32px;
+      
+      line-height: 36px;
+    }
+
+    .mainRef {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  }
+}
+
